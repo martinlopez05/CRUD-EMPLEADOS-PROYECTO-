@@ -30,7 +30,7 @@ public class Empleado implements Serializable {
     
     
     @ManyToOne
-    @JoinColumn(name= "id_departamento")
+    @JoinColumn(name= "ID_DEPARTAMENTO")
     private Departamento departamento;
 
     public Empleado() {
@@ -47,6 +47,19 @@ public class Empleado implements Serializable {
         this.sexo = sexo;
         this.departamento = departamento;
     }
+
+    public Empleado(String nombre, String apellido, int edad, String dni, String email, String celular, String sexo, Departamento departamento) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.dni = dni;
+        this.email = email;
+        this.celular = celular;
+        this.sexo = sexo;
+        this.departamento = departamento;
+    }
+    
+    
 
     public int getId() {
         return id;

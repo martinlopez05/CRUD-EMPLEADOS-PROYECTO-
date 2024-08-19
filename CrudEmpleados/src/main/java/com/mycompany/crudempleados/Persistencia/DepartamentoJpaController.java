@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 
 /**
@@ -179,6 +180,21 @@ public class DepartamentoJpaController implements Serializable {
             em.close();
         }
     }
+    
+    
+    public Departamento findDepartamentoByNombre(String nombre) {
+    EntityManager em = getEntityManager();
+    try {
+        return em.createQuery("SELECT d FROM Departamento d WHERE d.nombre = :nombre", Departamento.class)
+                 .setParameter("nombre", nombre)
+                 .getSingleResult();
+    } catch (NoResultException e) {
+        return null; 
+    } finally {
+        em.close();
+    }
+}
+
 
     public int getDepartamentoCount() {
         EntityManager em = getEntityManager();

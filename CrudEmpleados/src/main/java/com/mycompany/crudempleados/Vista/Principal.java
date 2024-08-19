@@ -113,6 +113,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel3.setText("¿QUE DESEA HACER?");
 
         btnAgregarDepartamento.setText("AGREGAR DEPARTAMENTO");
+        btnAgregarDepartamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarDepartamentoActionPerformed(evt);
+            }
+        });
 
         btnverDepartamento.setText("VER DEPARTAMENTOS");
         btnverDepartamento.addActionListener(new java.awt.event.ActionListener() {
@@ -152,9 +157,9 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(btnAgregarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnAgregarDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(27, 27, 27)
                 .addComponent(btnverEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(27, 27, 27)
                 .addComponent(btnverDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(62, 62, 62)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -177,7 +182,7 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnverEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnverEmpleadosActionPerformed
-        VerDepartamentos verdatos = new VerDepartamentos();
+        OpcionDatos verdatos = new OpcionDatos();
         verdatos.setVisible(true);
         verdatos.setLocationRelativeTo(null);
         
@@ -203,6 +208,13 @@ public class Principal extends javax.swing.JFrame {
         verdepartamentos.setLocationRelativeTo(null);
 // TODO add your handling code here:
     }//GEN-LAST:event_btnverDepartamentoActionPerformed
+
+    private void btnAgregarDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarDepartamentoActionPerformed
+        CrearDepartamento crearDepartamento = new CrearDepartamento();
+        crearDepartamento.setVisible(true);
+        crearDepartamento.setLocationRelativeTo(null);
+
+    }//GEN-LAST:event_btnAgregarDepartamentoActionPerformed
 
     
    

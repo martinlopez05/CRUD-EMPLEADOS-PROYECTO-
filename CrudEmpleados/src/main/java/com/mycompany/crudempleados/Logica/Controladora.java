@@ -14,9 +14,7 @@ import java.util.List;
 public class Controladora {
     ControladoraPersistencia controlPersis = new ControladoraPersistencia();
     
-    public void createDepartamento(Departamento depar){
-        controlPersis.createDepartamento(depar);
-    }
+    
     
     public void deleteDepartamento(int id){
         controlPersis.deleteDepartamento(id);
@@ -25,6 +23,11 @@ public class Controladora {
     
     public Departamento findDepartamento(int id){
         Departamento depar = controlPersis.findDepartamento(id);
+        return depar;
+    }
+    
+    public Departamento findDepartamentoByNombre(String nombre){
+        Departamento depar = controlPersis.findDepartamentoByNombre(nombre);
         return depar;
     }
     
@@ -38,10 +41,6 @@ public class Controladora {
     }
     
     
-    public void createEmpleado(Empleado emple){
-        controlPersis.createEmpleado(emple);
-        
-    }
     
     public void deleteEmpleado(int id){
         controlPersis.deleteEmpleado(id);
@@ -61,6 +60,18 @@ public class Controladora {
     public void editEmpleado(Empleado emple){
         controlPersis.editEmpleado(emple);
     }
+
+    public void guardarDepartamento(String nombre) {
+        Departamento depar = new Departamento(nombre);
+        controlPersis.createDepartamento(depar);
+    }
+
+    public void guardarEmpleado(String nombre, String apellido, int edad, String dni, String email, String celular, String sexo, Departamento depar) {
+        Empleado empleado = new Empleado(nombre,apellido,edad,dni,email,celular,sexo,depar);
+        controlPersis.createEmpleado(empleado);
+    }
+    
+    
     
     
 }

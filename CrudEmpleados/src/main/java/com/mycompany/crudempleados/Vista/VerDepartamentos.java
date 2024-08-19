@@ -4,6 +4,12 @@
  */
 package com.mycompany.crudempleados.Vista;
 
+import com.mycompany.crudempleados.Logica.Controladora;
+import com.mycompany.crudempleados.Logica.Departamento;
+import com.mycompany.crudempleados.Logica.Empleado;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Usuario
@@ -13,8 +19,11 @@ public class VerDepartamentos extends javax.swing.JFrame {
     /**
      * Creates new form VerDatos
      */
+    
+    Controladora control = null;
     public VerDepartamentos() {
         initComponents();
+        control = new Controladora();
     }
 
     /**
@@ -33,7 +42,7 @@ public class VerDepartamentos extends javax.swing.JFrame {
         btnVolver1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaDepartamentos = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -44,6 +53,11 @@ public class VerDepartamentos extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -88,8 +102,8 @@ public class VerDepartamentos extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
 
-        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaDepartamentos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tablaDepartamentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -100,7 +114,7 @@ public class VerDepartamentos extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaDepartamentos);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -140,9 +154,9 @@ public class VerDepartamentos extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(40, 40, 40)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83))
+                .addGap(87, 87, 87))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,7 +179,9 @@ public class VerDepartamentos extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -183,6 +199,10 @@ public class VerDepartamentos extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnVolver1ActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        cargarTablaDepartamento();
+    }//GEN-LAST:event_formWindowOpened
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -195,6 +215,29 @@ public class VerDepartamentos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaDepartamentos;
     // End of variables declaration//GEN-END:variables
+    
+    public void cargarTablaDepartamento(){
+        DefaultTableModel modelotabla = new DefaultTableModel() {
+           
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        
+        String titulo[] = {"Id","Nombre"};
+        modelotabla.setColumnIdentifiers(titulo);
+        
+        List<Departamento> departamentos = control.findAllDepartamentos();
+        
+        for(Departamento depar : departamentos){
+            Object objeto [] = {depar.getId(),depar.getNombre()};
+            modelotabla.addRow(objeto);
+        }
+        
+        tablaDepartamentos.setModel(modelotabla);
+        
+    }
 }

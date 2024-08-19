@@ -78,6 +78,10 @@ public class ControladoraPersistencia {
     public void createEmpleado(Empleado emple) {
         empleJpa.create(emple);
     }
+
+    public Departamento findDepartamentoByNombre(String nombre) {
+        return deparJpa.findDepartamentoByNombre(nombre);
+    }
     
     
     

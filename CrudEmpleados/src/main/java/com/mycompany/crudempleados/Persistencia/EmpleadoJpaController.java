@@ -15,6 +15,7 @@ import com.mycompany.crudempleados.Persistencia.exceptions.NonexistentEntityExce
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 
 /**
@@ -156,6 +157,10 @@ public class EmpleadoJpaController implements Serializable {
             em.close();
         }
     }
+    
+    
+    
+
 
     public int getEmpleadoCount() {
         EntityManager em = getEntityManager();
