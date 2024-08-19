@@ -1,16 +1,16 @@
-C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS A PRESENTAR\CrudEmpleados\src\main\java\com\mycompany\crudempleados\CrudEmpleados.java
-C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS A PRESENTAR\CrudEmpleados\src\main\java\com\mycompany\crudempleados\exceptions\IllegalOrphanException.java
-C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS A PRESENTAR\CrudEmpleados\src\main\java\com\mycompany\crudempleados\exceptions\NonexistentEntityException.java
-C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS A PRESENTAR\CrudEmpleados\src\main\java\com\mycompany\crudempleados\exceptions\PreexistingEntityException.java
-C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS A PRESENTAR\CrudEmpleados\src\main\java\com\mycompany\crudempleados\Logica\Controladora.java
-C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS A PRESENTAR\CrudEmpleados\src\main\java\com\mycompany\crudempleados\Logica\Departamento.java
-C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS A PRESENTAR\CrudEmpleados\src\main\java\com\mycompany\crudempleados\Logica\Empleado.java
-C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS A PRESENTAR\CrudEmpleados\src\main\java\com\mycompany\crudempleados\Persistencia\DepartamentoJpaController.java
-C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS A PRESENTAR\CrudEmpleados\src\main\java\com\mycompany\crudempleados\Persistencia\EmpleadoJpaController.java
-C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS A PRESENTAR\CrudEmpleados\src\main\java\com\mycompany\crudempleados\Persistencia\exceptions\IllegalOrphanException.java
-C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS A PRESENTAR\CrudEmpleados\src\main\java\com\mycompany\crudempleados\Persistencia\exceptions\NonexistentEntityException.java
-C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS A PRESENTAR\CrudEmpleados\src\main\java\com\mycompany\crudempleados\Persistencia\exceptions\PreexistingEntityException.java
-C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS A PRESENTAR\CrudEmpleados\src\main\java\com\mycompany\crudempleados\Vista\CrearEmpleado.java
-C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS A PRESENTAR\CrudEmpleados\src\main\java\com\mycompany\crudempleados\Vista\Principal.java
-C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS A PRESENTAR\CrudEmpleados\src\main\java\com\mycompany\crudempleados\Vista\VerDatos.java
-C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS A PRESENTAR\CrudEmpleados\src\main\java\com\mycompany\crudempleados\Vista\VerDepartamentos.java
+C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS PARA PRESENTAR\CRUD EMPLEADOS\CrudEmpleados\src\main\java\com\mycompany\crudempleados\CrudEmpleados.java
+C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS PARA PRESENTAR\CRUD EMPLEADOS\CrudEmpleados\src\main\java\com\mycompany\crudempleados\exceptions\IllegalOrphanException.java
+C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS PARA PRESENTAR\CRUD EMPLEADOS\CrudEmpleados\src\main\java\com\mycompany\crudempleados\exceptions\NonexistentEntityException.java
+C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS PARA PRESENTAR\CRUD EMPLEADOS\CrudEmpleados\src\main\java\com\mycompany\crudempleados\exceptions\PreexistingEntityException.java
+C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS PARA PRESENTAR\CRUD EMPLEADOS\CrudEmpleados\src\main\java\com\mycompany\crudempleados\Logica\Controladora.java
+C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS PARA PRESENTAR\CRUD EMPLEADOS\CrudEmpleados\src\main\java\com\mycompany\crudempleados\Logica\Departamento.java
+C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS PARA PRESENTAR\CRUD EMPLEADOS\CrudEmpleados\src\main\java\com\mycompany\crudempleados\Logica\Empleado.java
+C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS PARA PRESENTAR\CRUD EMPLEADOS\CrudEmpleados\src\main\java\com\mycompany\crudempleados\Persistencia\DepartamentoJpaController.java
+C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS PARA PRESENTAR\CRUD EMPLEADOS\CrudEmpleados\src\main\java\com\mycompany\crudempleados\Persistencia\EmpleadoJpaController.java
+C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS PARA PRESENTAR\CRUD EMPLEADOS\CrudEmpleados\src\main\java\com\mycompany\crudempleados\Persistencia\exceptions\IllegalOrphanException.java
+C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS PARA PRESENTAR\CRUD EMPLEADOS\CrudEmpleados\src\main\java\com\mycompany\crudempleados\Persistencia\exceptions\NonexistentEntityException.java
+C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS PARA PRESENTAR\CRUD EMPLEADOS\CrudEmpleados\src\main\java\com\mycompany\crudempleados\Persistencia\exceptions\PreexistingEntityException.java
+C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS PARA PRESENTAR\CRUD EMPLEADOS\CrudEmpleados\src\main\java\com\mycompany\crudempleados\Vista\CrearEmpleado.java
+C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS PARA PRESENTAR\CRUD EMPLEADOS\CrudEmpleados\src\main\java\com\mycompany\crudempleados\Vista\Principal.java
+C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS PARA PRESENTAR\CRUD EMPLEADOS\CrudEmpleados\src\main\java\com\mycompany\crudempleados\Vista\VerDatos.java
+C:\Users\Usuario\Desktop\universidad martin\JAVA\PROYECTOS PARA PRESENTAR\CRUD EMPLEADOS\CrudEmpleados\src\main\java\com\mycompany\crudempleados\Vista\VerDepartamentos.java

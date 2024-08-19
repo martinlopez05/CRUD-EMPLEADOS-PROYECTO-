@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -26,6 +27,12 @@ public class DepartamentoJpaController implements Serializable {
     public DepartamentoJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
+    
+    public DepartamentoJpaController() {
+        emf= Persistence.createEntityManagerFactory("CrudEmpleadosPU");
+    }
+    
+    
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
