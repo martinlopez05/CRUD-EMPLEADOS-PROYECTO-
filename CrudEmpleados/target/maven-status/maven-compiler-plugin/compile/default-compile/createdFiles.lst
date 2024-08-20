@@ -23,6 +23,7 @@ com\mycompany\crudempleados\Logica\Departamento_.class
 com\mycompany\crudempleados\Vista\CrearDepartamento$2.class
 com\mycompany\crudempleados\Persistencia\DepartamentoJpaController.class
 com\mycompany\crudempleados\Persistencia\exceptions\IllegalOrphanException.class
+com\mycompany\crudempleados\Vista\EditarEmpleado$2.class
 com\mycompany\crudempleados\Vista\OpcionDatos$4.class
 com\mycompany\crudempleados\Vista\VerDepartamentos$1.class
 com\mycompany\crudempleados\Vista\VerDepartamentos$5.class
@@ -35,10 +36,13 @@ com\mycompany\crudempleados\exceptions\IllegalOrphanException.class
 com\mycompany\crudempleados\Vista\VerDepartamentos$2.class
 com\mycompany\crudempleados\Vista\CrearDepartamento$1.class
 com\mycompany\crudempleados\Persistencia\exceptions\NonexistentEntityException.class
+com\mycompany\crudempleados\Vista\EditarEmpleado$1.class
 com\mycompany\crudempleados\Vista\VerDatos$1.class
 com\mycompany\crudempleados\Vista\Principal.class
+com\mycompany\crudempleados\Vista\EditarEmpleado$3.class
 com\mycompany\crudempleados\Vista\VerDepartamentos.class
 com\mycompany\crudempleados\Vista\VerDatos$2.class
+com\mycompany\crudempleados\Vista\EditarEmpleado.class
 com\mycompany\crudempleados\Vista\CrearEmpleado$1.class
 com\mycompany\crudempleados\Vista\OpcionDatos$2.class
 com\mycompany\crudempleados\Vista\Principal$5.class

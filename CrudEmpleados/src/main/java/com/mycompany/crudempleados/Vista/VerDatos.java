@@ -5,8 +5,11 @@
 package com.mycompany.crudempleados.Vista;
 
 import com.mycompany.crudempleados.Logica.Controladora;
+import static com.mycompany.crudempleados.Logica.Departamento_.empleados;
 import com.mycompany.crudempleados.Logica.Empleado;
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,11 +23,18 @@ public class VerDatos extends javax.swing.JFrame {
      */
     
     Controladora control = null;
+    private List<Empleado> empleados;
     
-    public VerDatos() {
+    public VerDatos(List<Empleado> empleados) {
+        this.empleados=empleados;
         initComponents();
         control = new Controladora();
+        
     }
+
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,8 +53,8 @@ public class VerDatos extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaEmpleados = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,14 +131,14 @@ public class VerDatos extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editar-informacion.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editar-informacion.png"))); // NOI18N
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnEditarActionPerformed(evt);
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/eliminar.png"))); // NOI18N
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/eliminar.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -141,9 +151,9 @@ public class VerDatos extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(81, 81, 81))
         );
         jPanel1Layout.setVerticalGroup(
@@ -154,8 +164,8 @@ public class VerDatos extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnEditar)
+                    .addComponent(btnEliminar))
                 .addGap(17, 17, 17))
         );
 
@@ -173,9 +183,27 @@ public class VerDatos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        if(tablaEmpleados.getRowCount()>0){
+            if(tablaEmpleados.getSelectedRow()!=-1){
+                int num_empleado = Integer.parseInt(String.valueOf(tablaEmpleados.getValueAt(tablaEmpleados.getSelectedRow(), 0)));
+                EditarEmpleado editarEmple = new EditarEmpleado(num_empleado);
+                editarEmple.setVisible(true);
+                editarEmple.setLocationRelativeTo(null);
+                this.dispose();
+            }
+            else{
+                mostrarMensaje("No se selecciono ningun empleado","error","Error al editar");
+            
+            }
+        }
+        else{
+            mostrarMensaje("No hay nada para editar en la tabla","error","Error al editar");
+        
+        }
+        
+
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
@@ -186,7 +214,7 @@ public class VerDatos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolver1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        cargarTablaEmpleado();
+        cargarTablaEmpleado(empleados);
     }//GEN-LAST:event_formWindowOpened
     
    
@@ -195,10 +223,10 @@ public class VerDatos extends javax.swing.JFrame {
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnVolver;
     private javax.swing.JButton btnVolver1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -207,7 +235,7 @@ public class VerDatos extends javax.swing.JFrame {
     private javax.swing.JTable tablaEmpleados;
     // End of variables declaration//GEN-END:variables
     
-    public void cargarTablaEmpleado(){
+    public void cargarTablaEmpleado(List<Empleado> empleados){
         DefaultTableModel modelotabla = new DefaultTableModel() {
            
             @Override
@@ -219,8 +247,6 @@ public class VerDatos extends javax.swing.JFrame {
         String titulo[] = {"Id","Nombre","Apellido","Dni","Email","Edad","Sexo","Celular","NomDepartamento"};
         modelotabla.setColumnIdentifiers(titulo);
         
-        List<Empleado> empleados = control.findAllEmpleado();
-        
         for(Empleado emple : empleados){
             Object objeto [] = {emple.getId(),emple.getNombre(),emple.getApellido(),emple.getDni(),emple.getEmail(),emple.getEdad(),emple.getSexo(),emple.getCelular(),emple.getDepartamento().getNombre()};
             modelotabla.addRow(objeto);
@@ -231,6 +257,20 @@ public class VerDatos extends javax.swing.JFrame {
         
         
         
+    }
+    
+    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
+        JOptionPane optionpane = new JOptionPane(mensaje);
+        if (tipo.equals("info")) {
+            optionpane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        }
+        if (tipo.equals("error")) {
+            optionpane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        }
+
+        JDialog dialog = optionpane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
     }
     
 }

@@ -7,6 +7,7 @@ package com.mycompany.crudempleados.Vista;
 import com.mycompany.crudempleados.Logica.Controladora;
 import com.mycompany.crudempleados.Logica.Departamento;
 import com.mycompany.crudempleados.Logica.Empleado;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -206,7 +207,30 @@ public class OpcionDatos extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnVerDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerDatosActionPerformed
-        // TODO add your handling code here:
+        
+        List<Empleado> empleados = control.findAllEmpleado();
+        String opcionSeleccionada = (String) boxOpcionVer.getSelectedItem();
+        List<Empleado> empleadosDeUnDepar = new ArrayList<Empleado>();
+        
+        if(boxOpcionVer.getSelectedItem().equals("Todos")){
+            VerDatos verdatos = new VerDatos(empleados);
+            verdatos.setVisible(true);
+            verdatos.setLocationRelativeTo(null);
+        }
+        if(boxOpcionVer.getSelectedItem()!=null && boxOpcionVer.getSelectedItem()!="Todos"){
+            for(Empleado emple:empleados){
+                String nombreDepar = emple.getDepartamento().getNombre();
+                if(boxOpcionVer.getSelectedItem().equals(nombreDepar)){
+                    empleadosDeUnDepar.add(emple);
+                }
+            }
+            
+            
+            VerDatos verdatos = new VerDatos(empleadosDeUnDepar);
+            verdatos.setVisible(true);
+            verdatos.setLocationRelativeTo(null);
+        }
+        
     }//GEN-LAST:event_btnVerDatosActionPerformed
     
    
@@ -234,8 +258,11 @@ public class OpcionDatos extends javax.swing.JFrame {
             this.boxOpcionVer.addItem(depar.getNombre());
         }
         
-        this.boxOpcionVer.addItem("todos");
+        this.boxOpcionVer.addItem("Todos");
     }
+    
+    
+    
     
     
 }

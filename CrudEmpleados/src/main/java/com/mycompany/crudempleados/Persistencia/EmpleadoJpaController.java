@@ -27,11 +27,11 @@ public class EmpleadoJpaController implements Serializable {
     public EmpleadoJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
+
     public EmpleadoJpaController() {
-        emf= Persistence.createEntityManagerFactory("CrudEmpleadosPU");
+        emf = Persistence.createEntityManagerFactory("CrudEmpleadosPU");
     }
-    
+
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
@@ -66,30 +66,42 @@ public class EmpleadoJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+
+            // Buscar la entidad persistente
             Empleado persistentEmpleado = em.find(Empleado.class, empleado.getId());
+            if (persistentEmpleado == null) {
+                throw new NonexistentEntityException("The empleado with id " + empleado.getId() + " no longer exists.");
+            }
+
+            // Obtener y actualizar departamentos
             Departamento departamentoOld = persistentEmpleado.getDepartamento();
             Departamento departamentoNew = empleado.getDepartamento();
+
+            // Actualizar referencia a departamento nuevo
             if (departamentoNew != null) {
                 departamentoNew = em.getReference(departamentoNew.getClass(), departamentoNew.getId());
                 empleado.setDepartamento(departamentoNew);
             }
+
+            // Actualizar empleado en la base de datos
             empleado = em.merge(empleado);
+
+            // Manejar relaciones con el departamento antiguo
             if (departamentoOld != null && !departamentoOld.equals(departamentoNew)) {
                 departamentoOld.getEmpleados().remove(empleado);
                 departamentoOld = em.merge(departamentoOld);
             }
+
+            // Manejar relaciones con el nuevo departamento
             if (departamentoNew != null && !departamentoNew.equals(departamentoOld)) {
                 departamentoNew.getEmpleados().add(empleado);
                 departamentoNew = em.merge(departamentoNew);
             }
+
             em.getTransaction().commit();
         } catch (Exception ex) {
-            String msg = ex.getLocalizedMessage();
-            if (msg == null || msg.length() == 0) {
-                int id = empleado.getId();
-                if (findEmpleado(id) == null) {
-                    throw new NonexistentEntityException("The empleado with id " + id + " no longer exists.");
-                }
+            if (em != null && em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
             }
             throw ex;
         } finally {
@@ -157,10 +169,6 @@ public class EmpleadoJpaController implements Serializable {
             em.close();
         }
     }
-    
-    
-    
-
 
     public int getEmpleadoCount() {
         EntityManager em = getEntityManager();
@@ -174,5 +182,5 @@ public class EmpleadoJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }
