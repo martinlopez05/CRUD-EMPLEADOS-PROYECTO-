@@ -15,6 +15,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+
+
 @Entity
 public class Departamento implements Serializable {
     
@@ -27,7 +29,7 @@ public class Departamento implements Serializable {
     private String nombre;
     
     
-    @OneToMany(mappedBy="departamento",orphanRemoval=true)
+    @OneToMany(mappedBy="departamento")
     private List<Empleado> empleados;
 
 

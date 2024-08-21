@@ -20,9 +20,10 @@ public class EditarEmpleado extends javax.swing.JFrame {
     /**
      * Creates new form CrearEmpleado
      */
-    Controladora control = null;
+    //llamada a la controladora de la logica
+    private Controladora control = null;
     private int num_empleado;
-    Empleado empleado;
+    private Empleado empleado;
 
     public EditarEmpleado(int num_empleado) {
         this.num_empleado = num_empleado;
@@ -85,6 +86,7 @@ public class EditarEmpleado extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         btnVolver = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         btnLimpiar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
@@ -94,7 +96,7 @@ public class EditarEmpleado extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         boxSexo = new javax.swing.JComboBox<>();
-        boxDepar = new javax.swing.JComboBox<>();
+        boxDepartamento = new javax.swing.JComboBox<>();
 
         jLabel1.setText("jLabel1");
 
@@ -271,6 +273,11 @@ public class EditarEmpleado extends javax.swing.JFrame {
         jButton3.setText("jButton3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -311,6 +318,8 @@ public class EditarEmpleado extends javax.swing.JFrame {
             }
         });
 
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/empleo.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -320,7 +329,9 @@ public class EditarEmpleado extends javax.swing.JFrame {
                 .addComponent(btnVolver)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(273, 273, 273))
+                .addGap(139, 139, 139)
+                .addComponent(jLabel19)
+                .addGap(70, 70, 70))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -331,8 +342,11 @@ public class EditarEmpleado extends javax.swing.JFrame {
                         .addComponent(jLabel12))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel19)))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
@@ -368,19 +382,15 @@ public class EditarEmpleado extends javax.swing.JFrame {
         boxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Masculino", "Femenino" }));
         boxSexo.setAutoscrolls(true);
 
-        boxDepar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
+        boxDepartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addGap(18, 18, 18)
-                        .addComponent(boxDepar, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel2)
@@ -393,26 +403,32 @@ public class EditarEmpleado extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtApellido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtEdad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(183, 183, 183)
-                                .addComponent(jLabel16)
-                                .addGap(40, 40, 40))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addGap(9, 9, 9)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtEdad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(188, 188, 188)
-                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel15)
+                        .addGap(18, 18, 18)
+                        .addComponent(boxDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(183, 183, 183)
+                                    .addComponent(jLabel16)
+                                    .addGap(40, 40, 40))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(19, 19, 19))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtEmail)
                     .addComponent(txtCelular)
@@ -420,11 +436,11 @@ public class EditarEmpleado extends javax.swing.JFrame {
                     .addComponent(boxSexo, 0, 161, Short.MAX_VALUE))
                 .addGap(153, 153, 153))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(460, 460, 460)
+                .addGap(454, 454, 454)
                 .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73)
+                .addGap(74, 74, 74)
                 .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 108, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -450,17 +466,18 @@ public class EditarEmpleado extends javax.swing.JFrame {
                     .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16)
                     .addComponent(jLabel17))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel18)
-                    .addComponent(boxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(boxDepar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(92, 92, 92)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(boxDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(boxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel18))
+                    .addComponent(jLabel15))
+                .addGap(54, 54, 54)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26))
+                .addGap(42, 42, 42))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -471,46 +488,70 @@ public class EditarEmpleado extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        // TODO add your handling code here:
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtEdad.setText("");
+        boxDepartamento.setSelectedIndex(0);
+        txtDni.setText("");
+        txtEmail.setText("");
+        txtCelular.setText("");
+        boxSexo.setSelectedIndex(0);
+        
     }//GEN-LAST:event_btnLimpiarActionPerformed
-
+    
+    
+    //metodo para regresar a la ventana anterior
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
-
+    
+    
+    //metodo para guardar los atributos editados
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         String nombre = txtNombre.getText();
         String apellido = txtApellido.getText();
         int edad = Integer.parseInt(txtEdad.getText());
-        String nomDepartamento = (String) boxDepar.getSelectedItem();
+        String nomDepartamento = (String) boxDepartamento.getSelectedItem();
         String dni = txtDni.getText();
         String email = txtEmail.getText();
         String celular = txtCelular.getText();
         String sexo = (String) boxSexo.getSelectedItem();
-        
-        Departamento depar = control.findDepartamentoByNombre(nomDepartamento);
+
+        if (nomDepartamento != null) {
+            Departamento departamento = control.findDepartamentoByNombre(nomDepartamento);
+
+            control.editEmpleado(empleado, nombre, apellido, edad, dni, email, celular, sexo, departamento);
+        }
+        else{
+            control.editEmpleado(empleado, nombre, apellido, edad, dni, email, celular, sexo, null);
+        }
         
 
-        control.editEmpleado(empleado,nombre, apellido, edad, dni, email, celular, sexo, depar);
+        
 
         mostrarMensaje("Empleado editado correctamente", "info", "Edicion correcta");
-        
-        VerDatos verdatos = new VerDatos(control.findAllEmpleado());
+
+        OpcionDatos verdatos = new OpcionDatos();
         verdatos.setVisible(true);
         verdatos.setLocationRelativeTo(null);
         this.dispose();
+
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+
+    }//GEN-LAST:event_formWindowClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> boxDepar;
+    private javax.swing.JComboBox<String> boxDepartamento;
     private javax.swing.JComboBox<String> boxSexo;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLimpiar;
@@ -526,6 +567,7 @@ public class EditarEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -561,15 +603,18 @@ public class EditarEmpleado extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
-
+    
+    
+    //metodo para cargar en el combo box de departamentos los nombres de los mismos
     public void cargarCmbDepartamentos() {
         List<Departamento> departamentos = control.findAllDepartamentos();
 
         for (Departamento depar : departamentos) {
-            this.boxDepar.addItem(depar.getNombre());
+            this.boxDepartamento.addItem(depar.getNombre());
         }
     }
-
+    
+    //metodo para mostrar un mensaje en cartel
     public void mostrarMensaje(String mensaje, String tipo, String titulo) {
         JOptionPane optionpane = new JOptionPane(mensaje);
         if (tipo.equals("info")) {
@@ -583,7 +628,9 @@ public class EditarEmpleado extends javax.swing.JFrame {
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
     }
-
+    
+    
+    //metodo para cargar los datos a la ventana de edicion
     public void cargarDatos(int num_cliente) {
         this.empleado = control.findEmpleado(num_cliente);
 
@@ -594,14 +641,25 @@ public class EditarEmpleado extends javax.swing.JFrame {
         txtEmail.setText(empleado.getEmail());
         txtCelular.setText(empleado.getCelular());
         
-        String nomDepartamento = empleado.getDepartamento().getNombre();
         
-        boxDepar.setSelectedItem(nomDepartamento);
+        Departamento depto = empleado.getDepartamento();
         
-        if(empleado.getSexo().equals("Masculino")){
+        
+        
+        //manejo del caso NULL del departamento
+        if(depto != null){
+            String nomDepartamento = depto.getNombre();
+            boxDepartamento.setSelectedItem(nomDepartamento);
+        }
+        else{
+            boxDepartamento.setSelectedIndex(0); 
+        }
+        
+
+        if (empleado.getSexo().equals("Masculino")) {
             boxSexo.setSelectedIndex(1);
         }
-        if(empleado.getSexo().equals("Femenino")){
+        if (empleado.getSexo().equals("Femenino")) {
             boxSexo.setSelectedIndex(2);
         }
 

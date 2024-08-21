@@ -8,6 +8,8 @@ import com.mycompany.crudempleados.Logica.Controladora;
 import com.mycompany.crudempleados.Logica.Departamento;
 import com.mycompany.crudempleados.Logica.Empleado;
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,7 +22,8 @@ public class VerDepartamentos extends javax.swing.JFrame {
      * Creates new form VerDatos
      */
     
-    Controladora control = null;
+    //llamada a la controladora de la logica
+    private Controladora control = null;
     public VerDepartamentos() {
         initComponents();
         control = new Controladora();
@@ -43,8 +46,8 @@ public class VerDepartamentos extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaDepartamentos = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,7 +69,7 @@ public class VerDepartamentos extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 36)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("Datos");
+        jLabel12.setText("DEPARTAMENTOS");
 
         btnVolver1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flecha-curva-apuntando-hacia-la-izquierda.png"))); // NOI18N
         btnVolver1.addActionListener(new java.awt.event.ActionListener() {
@@ -82,8 +85,8 @@ public class VerDepartamentos extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(btnVolver1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(251, 251, 251)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(197, 197, 197)
+                .addComponent(jLabel12)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -94,9 +97,9 @@ public class VerDepartamentos extends javax.swing.JFrame {
                         .addGap(16, 16, 16)
                         .addComponent(btnVolver1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
+                        .addGap(43, 43, 43)
                         .addComponent(jLabel12)))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -133,14 +136,19 @@ public class VerDepartamentos extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editar-informacion.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editar-informacion.png"))); // NOI18N
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnEditarActionPerformed(evt);
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/eliminar.png"))); // NOI18N
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/eliminar.png"))); // NOI18N
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -153,9 +161,9 @@ public class VerDepartamentos extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(87, 87, 87))
         );
         jPanel1Layout.setVerticalGroup(
@@ -166,8 +174,8 @@ public class VerDepartamentos extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnEditar)
+                    .addComponent(btnEliminar))
                 .addGap(17, 17, 17))
         );
 
@@ -186,30 +194,78 @@ public class VerDepartamentos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    //metodo para editar un departamento
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        if (tablaDepartamentos.getRowCount() > 0) {
+            if (tablaDepartamentos.getSelectedRow() != -1) {
+                int num_departamento = Integer.parseInt(String.valueOf(tablaDepartamentos.getValueAt(tablaDepartamentos.getSelectedRow(), 0)));
+                EditarDepartamento editarDepar = new EditarDepartamento(num_departamento);
+                editarDepar.setVisible(true);
+                editarDepar.setLocationRelativeTo(null);
+                this.dispose();
+            } else {
+                mostrarMensaje("No se selecciono ningun departamento", "error", "Error al editar");
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+            }
+        } else {
+            mostrarMensaje("No hay nada para editar en la tabla", "error", "Error al editar");
+
+        }
+        
+
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
-
+    
+    //metodo para regresar a la ventana anterior 
     private void btnVolver1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolver1ActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnVolver1ActionPerformed
-
+    
+    //metodo para cargar la tabla cuando se abra esta ventana
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cargarTablaDepartamento();
     }//GEN-LAST:event_formWindowOpened
+    
+    //metodo para eliminar un departamento
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        if (tablaDepartamentos.getRowCount() > 0) {
+            if (tablaDepartamentos.getSelectedRow() != -1) {
+                int num_departamento = Integer.parseInt(String.valueOf(tablaDepartamentos.getValueAt(tablaDepartamentos.getSelectedRow(), 0)));
+                boolean respuesta = mostrarConfirmacion(this,
+                        "Estas seguro que deseas eliminar este departamento",
+                        "Confirmacion para eliminar Departamento con la id" + num_departamento
+                );
+                
+                if(respuesta){
+                    control.deleteDepartamento(num_departamento);
+                    mostrarMensaje("Departamento eliminado correctamente","info","Eliminacion correcta");
+                }
+                else{
+                    mostrarMensaje("Eliminacion de departamento cancelada","info","Operacion cancelada");
+                }
+                
+            } else {
+                mostrarMensaje("No se selecciono ningun departamento", "error", "Error al editar");
+
+            }
+        } else {
+            mostrarMensaje("No hay nada para editar en la tabla", "error", "Error al editar");
+
+        }
+
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnVolver;
     private javax.swing.JButton btnVolver1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -218,6 +274,7 @@ public class VerDepartamentos extends javax.swing.JFrame {
     private javax.swing.JTable tablaDepartamentos;
     // End of variables declaration//GEN-END:variables
     
+    //metodo para cargar la tabla de departamentos
     public void cargarTablaDepartamento(){
         DefaultTableModel modelotabla = new DefaultTableModel() {
            
@@ -239,5 +296,34 @@ public class VerDepartamentos extends javax.swing.JFrame {
         
         tablaDepartamentos.setModel(modelotabla);
         
+    }
+    
+    //metodo para crear un mensaje mediante JOptionPane
+    public void mostrarMensaje(String mensaje, String tipo, String titulo) {
+        JOptionPane optionpane = new JOptionPane(mensaje);
+        if (tipo.equals("info")) {
+            optionpane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        }
+        if (tipo.equals("error")) {
+            optionpane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        }
+
+        JDialog dialog = optionpane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }
+
+    
+    //metodo para crear un cartel de confirmacion de la accion mediante un JOptionpane
+    public static boolean mostrarConfirmacion(java.awt.Component parentComponent, String mensajeAmostrar, String titulo) {
+        int respuesta = JOptionPane.showConfirmDialog(
+                parentComponent,
+                mensajeAmostrar,
+                titulo,
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE
+        );
+
+        return respuesta == JOptionPane.YES_OPTION;
     }
 }

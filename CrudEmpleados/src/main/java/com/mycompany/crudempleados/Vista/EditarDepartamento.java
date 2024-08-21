@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  *
  * @author Usuario
  */
-public class CrearDepartamento extends javax.swing.JFrame {
+public class EditarDepartamento extends javax.swing.JFrame {
 
     /**
      * Creates new form CrearEmpleado
@@ -21,10 +21,14 @@ public class CrearDepartamento extends javax.swing.JFrame {
     
     //llamada a la controladora de la logica
     private Controladora control;
-    
-    public CrearDepartamento() {
+    private Departamento depar;
+    private int num_departamento;  
+            
+    public EditarDepartamento(int num_departamento) {
         initComponents();
         this.control = new Controladora();
+        this.num_departamento=num_departamento;
+        cargarDatos(num_departamento);
         
     }
 
@@ -266,7 +270,7 @@ public class CrearDepartamento extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 36)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("CARGA DE DATOS");
+        jLabel12.setText("EDICIÓN DE DATOS");
 
         btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flecha-curva-apuntando-hacia-la-izquierda.png"))); // NOI18N
         btnVolver.setToolTipText("");
@@ -284,9 +288,9 @@ public class CrearDepartamento extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(btnVolver)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(163, 163, 163)
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(165, 165, 165))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -386,22 +390,26 @@ public class CrearDepartamento extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    //metodo para settear los txt y los combo box
+    //metodo para settear los txt y combo box
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         txtNombre.setText("");
     }//GEN-LAST:event_btnLimpiarActionPerformed
     
-    //metodo para regresar a la ventana anterior
+    //metodo para regresar a una ventana anterior
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
     
-    //meotodo para guardar y crear el departamento
+    
+    //metodo para guardar los cambios y editar el departamento
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         String nombre = txtNombre.getText();
-        control.guardarDepartamento(nombre);
-        mostrarMensaje("Departamento guardado correctamente","info","Guardado correcto");
-
+        control.editDepartamento(depar,nombre);
+        mostrarMensaje("Departamento editado correctamente","info","Edicion correcta");
+        this.dispose();
+        VerDepartamentos verDepar = new VerDepartamentos();
+        verDepar.setVisible(true);
+        verDepar.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     
@@ -448,8 +456,7 @@ public class CrearDepartamento extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
     
-    
-    //metodo para mostrar mensajes mediante JOptionPane
+    //metodo para crear un mensaje a traves de JOptionPane
     public void mostrarMensaje(String mensaje, String tipo, String titulo) {
         JOptionPane optionpane = new JOptionPane(mensaje);
         if (tipo.equals("info")) {
@@ -463,5 +470,10 @@ public class CrearDepartamento extends javax.swing.JFrame {
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
     }
-
+   
+    //metodo para cargar los datos del departamento en la ventana de edicion 
+    public void cargarDatos(int num_departamento){
+        this.depar = control.findDepartamento(num_departamento);
+        txtNombre.setText(depar.getNombre());      
+    }
 }

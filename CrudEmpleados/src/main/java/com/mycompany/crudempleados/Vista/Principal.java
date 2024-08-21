@@ -182,7 +182,9 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    
+    //metodo para visualizar los datos de los empleados
     private void btnverEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnverEmpleadosActionPerformed
         OpcionDatos verdatos = new OpcionDatos();
         verdatos.setVisible(true);
@@ -193,25 +195,30 @@ public class Principal extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
-
+    
+    //metodo para salir de la aplicacion y deteniendo su ejecucion
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         this.dispose();
         System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
-
+    
+    
+    //metodo para abrir la ventana para crear un empleado
     private void btnAgregarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadoActionPerformed
         CrearEmpleado cargaempleado = new CrearEmpleado();
         cargaempleado.setVisible(true);
         cargaempleado.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnAgregarEmpleadoActionPerformed
-
+    
+    //metodo para visualizar los datos de los departamentos
     private void btnverDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnverDepartamentoActionPerformed
         VerDepartamentos verdepartamentos = new VerDepartamentos();
         verdepartamentos.setVisible(true);
         verdepartamentos.setLocationRelativeTo(null);
 // TODO add your handling code here:
     }//GEN-LAST:event_btnverDepartamentoActionPerformed
-
+     
+    //metodo para abrir la ventana para crear un departamento
     private void btnAgregarDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarDepartamentoActionPerformed
         CrearDepartamento crearDepartamento = new CrearDepartamento();
         crearDepartamento.setVisible(true);

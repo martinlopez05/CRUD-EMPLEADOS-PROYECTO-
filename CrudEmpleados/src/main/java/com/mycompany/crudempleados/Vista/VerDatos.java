@@ -22,19 +22,17 @@ public class VerDatos extends javax.swing.JFrame {
      * Creates new form VerDatos
      */
     
-    Controladora control = null;
+    //llamada a la controladora de la logica
+    private Controladora control = null;
     private List<Empleado> empleados;
-    
+
+    //Le pasamos por parametro al constructor para asi a partir de esa lista mostrar los empleados
     public VerDatos(List<Empleado> empleados) {
-        this.empleados=empleados;
+        this.empleados = empleados;
         initComponents();
         control = new Controladora();
-        
-    }
 
-    
-    
-    
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -76,7 +74,7 @@ public class VerDatos extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 36)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("Datos");
+        jLabel12.setText("EMPLEADOS");
 
         btnVolver1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flecha-curva-apuntando-hacia-la-izquierda.png"))); // NOI18N
         btnVolver1.addActionListener(new java.awt.event.ActionListener() {
@@ -90,23 +88,20 @@ public class VerDatos extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(47, 47, 47)
                 .addComponent(btnVolver1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(251, 251, 251)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(210, 210, 210)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(btnVolver1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jLabel12)))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel12)
+                    .addComponent(btnVolver1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -139,6 +134,11 @@ public class VerDatos extends javax.swing.JFrame {
         });
 
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/eliminar.png"))); // NOI18N
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -182,45 +182,70 @@ public class VerDatos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    //metodo para editar un empleado
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        if(tablaEmpleados.getRowCount()>0){
-            if(tablaEmpleados.getSelectedRow()!=-1){
+        if (tablaEmpleados.getRowCount() > 0) {
+            if (tablaEmpleados.getSelectedRow() != -1) {
                 int num_empleado = Integer.parseInt(String.valueOf(tablaEmpleados.getValueAt(tablaEmpleados.getSelectedRow(), 0)));
                 EditarEmpleado editarEmple = new EditarEmpleado(num_empleado);
                 editarEmple.setVisible(true);
                 editarEmple.setLocationRelativeTo(null);
                 this.dispose();
-            }
-            else{
-                mostrarMensaje("No se selecciono ningun empleado","error","Error al editar");
-            
-            }
-        }
-        else{
-            mostrarMensaje("No hay nada para editar en la tabla","error","Error al editar");
-        
-        }
-        
+            } else {
+                mostrarMensaje("No se selecciono ningun empleado", "error", "Error al editar");
 
+            }
+        } else {
+            mostrarMensaje("No hay nada para editar en la tabla", "error", "Error al editar");
+
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnVolverActionPerformed
 
+    }//GEN-LAST:event_btnVolverActionPerformed
+    
+    //metodo para regresar a la ventana anterior
     private void btnVolver1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolver1ActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnVolver1ActionPerformed
-
+    
+    //metodo para cargar la tabla cuando se abre esta ventana
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cargarTablaEmpleado(empleados);
     }//GEN-LAST:event_formWindowOpened
     
-   
-    
-    
-  
+    //metodo para eliminar un empleado
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        if (tablaEmpleados.getRowCount() > 0) {
+            if (tablaEmpleados.getSelectedRow() != -1) {
+
+                int num_empleado = Integer.parseInt(String.valueOf(tablaEmpleados.getValueAt(tablaEmpleados.getSelectedRow(), 0)));
+
+                boolean confirmacion = mostrarConfirmacion(this,
+                        "Estas seguro que deseas eliminar al empleado con la id " + num_empleado,
+                        "Confirmacion de eliminacion"
+                );
+
+                if (confirmacion) {
+                    control.deleteEmpleado(num_empleado);
+                    mostrarMensaje("Empleado eliminado correctamente", "info", "Eliminacion correcta");
+                    this.dispose();
+                } else {
+                    mostrarMensaje("Operacion de eliminacion cancelada", "info", "Operacion cancelada");
+                }
+
+            } else {
+                mostrarMensaje("No se selecciono ningun empleado", "error", "Error al editar");
+
+            }
+        } else {
+            mostrarMensaje("No hay nada para editar en la tabla", "error", "Error al editar");
+
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditar;
@@ -234,31 +259,38 @@ public class VerDatos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tablaEmpleados;
     // End of variables declaration//GEN-END:variables
-    
-    public void cargarTablaEmpleado(List<Empleado> empleados){
+     
+    //metodo para cargar la tabla de empleados segun el departamento
+    public void cargarTablaEmpleado(List<Empleado> empleados) {
         DefaultTableModel modelotabla = new DefaultTableModel() {
-           
+
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
-        
-        String titulo[] = {"Id","Nombre","Apellido","Dni","Email","Edad","Sexo","Celular","NomDepartamento"};
+
+        String titulo[] = {"Id", "Nombre", "Apellido", "Dni", "Email", "Edad", "Sexo", "Celular", "NomDepartamento"};
         modelotabla.setColumnIdentifiers(titulo);
-        
-        for(Empleado emple : empleados){
-            Object objeto [] = {emple.getId(),emple.getNombre(),emple.getApellido(),emple.getDni(),emple.getEmail(),emple.getEdad(),emple.getSexo(),emple.getCelular(),emple.getDepartamento().getNombre()};
-            modelotabla.addRow(objeto);
+
+        for (Empleado emple : empleados) {
+            if (emple.getDepartamento() != null) {
+                Object objeto[] = {emple.getId(), emple.getNombre(), emple.getApellido(), emple.getDni(), emple.getEmail(), emple.getEdad(), emple.getSexo(), emple.getCelular(), emple.getDepartamento().getNombre()};
+                modelotabla.addRow(objeto);
+            }
+            else{
+                Object objeto[] = {emple.getId(), emple.getNombre(), emple.getApellido(), emple.getDni(), emple.getEmail(), emple.getEdad(), emple.getSexo(), emple.getCelular(), null};
+                modelotabla.addRow(objeto);
+            }
+            
+
         }
-        
+
         tablaEmpleados.setModel(modelotabla);
-        
-        
-        
-        
     }
     
+    
+    //metodo para crear un mensaje mediante JOptionPane
     public void mostrarMensaje(String mensaje, String tipo, String titulo) {
         JOptionPane optionpane = new JOptionPane(mensaje);
         if (tipo.equals("info")) {
@@ -273,4 +305,17 @@ public class VerDatos extends javax.swing.JFrame {
         dialog.setVisible(true);
     }
     
+    
+    //metodo para mostrar un cartel de confirmacion de la accion mediante JOptionPane
+    public static boolean mostrarConfirmacion(java.awt.Component parentComponent, String mensajeAmostrar, String titulo) {
+        int respuesta = JOptionPane.showConfirmDialog(
+                parentComponent,
+                mensajeAmostrar,
+                titulo,
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE
+        );
+
+        return respuesta == JOptionPane.YES_OPTION;
+    }
 }

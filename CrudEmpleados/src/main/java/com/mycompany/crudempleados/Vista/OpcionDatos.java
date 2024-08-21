@@ -21,7 +21,8 @@ public class OpcionDatos extends javax.swing.JFrame {
      * Creates new form VerDatos
      */
     
-    Controladora control = null;
+    //llamada a la controladora de la logica
+    private Controladora control = null;
     
     public OpcionDatos() {
         initComponents();
@@ -69,7 +70,7 @@ public class OpcionDatos extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 36)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("EMPLEADOS");
+        jLabel12.setText("VISUALIZACION DE DATOS");
 
         btnVolver1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flecha-curva-apuntando-hacia-la-izquierda.png"))); // NOI18N
         btnVolver1.addActionListener(new java.awt.event.ActionListener() {
@@ -82,11 +83,11 @@ public class OpcionDatos extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(btnVolver1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(167, 167, 167)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -97,9 +98,9 @@ public class OpcionDatos extends javax.swing.JFrame {
                         .addGap(16, 16, 16)
                         .addComponent(btnVolver1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
+                        .addGap(38, 38, 38)
                         .addComponent(jLabel12)))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -193,11 +194,13 @@ public class OpcionDatos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    //metodo para regresar a la ventana anterior
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
-
+    
+    
     private void btnVolver1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolver1ActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnVolver1ActionPerformed
@@ -205,28 +208,21 @@ public class OpcionDatos extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
     }//GEN-LAST:event_formWindowOpened
-
+    
+    
+    //metodo para abrir una ventana para la visualizacion de los datos segun departamentos
     private void btnVerDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerDatosActionPerformed
         
         List<Empleado> empleados = control.findAllEmpleado();
         String opcionSeleccionada = (String) boxOpcionVer.getSelectedItem();
-        List<Empleado> empleadosDeUnDepar = new ArrayList<Empleado>();
-        
         if(boxOpcionVer.getSelectedItem().equals("Todos")){
             VerDatos verdatos = new VerDatos(empleados);
             verdatos.setVisible(true);
             verdatos.setLocationRelativeTo(null);
         }
-        if(boxOpcionVer.getSelectedItem()!=null && boxOpcionVer.getSelectedItem()!="Todos"){
-            for(Empleado emple:empleados){
-                String nombreDepar = emple.getDepartamento().getNombre();
-                if(boxOpcionVer.getSelectedItem().equals(nombreDepar)){
-                    empleadosDeUnDepar.add(emple);
-                }
-            }
-            
-            
-            VerDatos verdatos = new VerDatos(empleadosDeUnDepar);
+        if(opcionSeleccionada !=null && opcionSeleccionada!="Todos"){
+            List<Empleado> empleadosDepar = control.findEmpleadosbyDepartamento(opcionSeleccionada);
+            VerDatos verdatos = new VerDatos(empleadosDepar);
             verdatos.setVisible(true);
             verdatos.setLocationRelativeTo(null);
         }
@@ -251,6 +247,8 @@ public class OpcionDatos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
     
+    
+    //metodo para cargar el combo box con los nombres de los departamentos existentes
     public void cargarCmbDepartamentos(){
         List<Departamento> departamentos = control.findAllDepartamentos();
         
