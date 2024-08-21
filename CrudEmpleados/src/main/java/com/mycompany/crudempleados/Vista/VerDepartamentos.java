@@ -71,6 +71,7 @@ public class VerDepartamentos extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("DEPARTAMENTOS");
 
+        btnVolver1.setBackground(new java.awt.Color(204, 204, 204));
         btnVolver1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flecha-curva-apuntando-hacia-la-izquierda.png"))); // NOI18N
         btnVolver1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,6 +137,7 @@ public class VerDepartamentos extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        btnEditar.setBackground(new java.awt.Color(204, 204, 204));
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editar-informacion.png"))); // NOI18N
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,6 +145,7 @@ public class VerDepartamentos extends javax.swing.JFrame {
             }
         });
 
+        btnEliminar.setBackground(new java.awt.Color(204, 204, 204));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/eliminar.png"))); // NOI18N
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,7 +175,7 @@ public class VerDepartamentos extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnEditar)
                     .addComponent(btnEliminar))
@@ -187,9 +190,7 @@ public class VerDepartamentos extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -243,6 +244,7 @@ public class VerDepartamentos extends javax.swing.JFrame {
                 if(respuesta){
                     control.deleteDepartamento(num_departamento);
                     mostrarMensaje("Departamento eliminado correctamente","info","Eliminacion correcta");
+                    this.dispose();
                 }
                 else{
                     mostrarMensaje("Eliminacion de departamento cancelada","info","Operacion cancelada");
@@ -298,7 +300,7 @@ public class VerDepartamentos extends javax.swing.JFrame {
         
     }
     
-    //metodo para crear un mensaje mediante JOptionPane
+    //metodo para crear un mensaje mediante JOptionPane (INFO O ERROR)
     public void mostrarMensaje(String mensaje, String tipo, String titulo) {
         JOptionPane optionpane = new JOptionPane(mensaje);
         if (tipo.equals("info")) {

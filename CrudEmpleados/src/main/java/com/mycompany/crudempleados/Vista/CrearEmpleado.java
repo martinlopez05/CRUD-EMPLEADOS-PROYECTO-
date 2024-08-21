@@ -19,10 +19,9 @@ public class CrearEmpleado extends javax.swing.JFrame {
     /**
      * Creates new form CrearEmpleado
      */
-    
     //llamada a la controladora de la logica
     private Controladora control = null;
-    
+
     public CrearEmpleado() {
         initComponents();
         control = new Controladora();
@@ -32,8 +31,6 @@ public class CrearEmpleado extends javax.swing.JFrame {
     public void setControl(Controladora control) {
         this.control = control;
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -303,6 +300,7 @@ public class CrearEmpleado extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("CARGA DE DATOS");
 
+        btnVolver.setBackground(new java.awt.Color(204, 204, 204));
         btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flecha-curva-apuntando-hacia-la-izquierda.png"))); // NOI18N
         btnVolver.setToolTipText("");
         btnVolver.setAutoscrolls(true);
@@ -346,6 +344,7 @@ public class CrearEmpleado extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Departamento:");
 
+        btnLimpiar.setBackground(new java.awt.Color(204, 204, 204));
         btnLimpiar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Downloads\\escoba.png")); // NOI18N
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -353,6 +352,7 @@ public class CrearEmpleado extends javax.swing.JFrame {
             }
         });
 
+        btnGuardar.setBackground(new java.awt.Color(204, 204, 204));
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/salvar.png"))); // NOI18N
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -373,9 +373,11 @@ public class CrearEmpleado extends javax.swing.JFrame {
         jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("Sexo:");
 
+        boxSexo.setBackground(new java.awt.Color(204, 204, 204));
         boxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Masculino", "Femenino" }));
         boxSexo.setAutoscrolls(true);
 
+        boxDepar.setBackground(new java.awt.Color(204, 204, 204));
         boxDepar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -433,7 +435,7 @@ public class CrearEmpleado extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(454, 454, 454)
                 .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70)
+                .addGap(78, 78, 78)
                 .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -472,7 +474,7 @@ public class CrearEmpleado extends javax.swing.JFrame {
                             .addComponent(jLabel18)
                             .addComponent(boxDepar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel15))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(jLabel14)
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -494,7 +496,7 @@ public class CrearEmpleado extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     //metodo para setter los datos de los txt y combo box
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         txtNombre.setText("");
@@ -506,34 +508,53 @@ public class CrearEmpleado extends javax.swing.JFrame {
         txtCelular.setText("");
         boxSexo.setSelectedIndex(0);
     }//GEN-LAST:event_btnLimpiarActionPerformed
-    
-    
+
     //metodo para regresar a la ventana anterior
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
-    
-    
+
     //metodo para guardar y crear el empleado
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-       String nombre = txtNombre.getText();
-       String apellido = txtApellido.getText();
-       int edad = Integer.parseInt(txtEdad.getText());
-       String nomDepartamento = (String)boxDepar.getSelectedItem();
-       String dni = txtDni.getText();
-       String email = txtEmail.getText();
-       String celular = txtCelular.getText();
-       String sexo = (String) boxSexo.getSelectedItem();
-       
-       Departamento depar = control.findDepartamentoByNombre(nomDepartamento);
-       
-       control.guardarEmpleado(nombre,apellido,edad,dni,email,celular,sexo,depar);
-       
-       mostrarMensaje("Empleado guardado correctamente","info","Guardado correcto");
-       
+        String nombre = txtNombre.getText();
+        String apellido = txtApellido.getText();
+        String edadTxt = txtEdad.getText();
+        String nomDepartamento = (String) boxDepar.getSelectedItem();
+        String dni = txtDni.getText();
+        String email = txtEmail.getText();
+        String celular = txtCelular.getText();
+        String sexo = (String) boxSexo.getSelectedItem();
+        
+        //manejo de los casos en que los campos esten vacios y la edad no sea valida
+        if ((nombre == null || nombre.isEmpty())
+                || (apellido == null || apellido.isEmpty())
+                || (edadTxt == null || edadTxt.isEmpty())
+                || (dni == null || dni.isEmpty())
+                || (email == null || email.isEmpty())
+                || (celular == null || celular.isEmpty())
+                || (nomDepartamento == null || nomDepartamento.equals("-")
+                || (sexo == null || sexo.equals("-")))) {
+            mostrarMensaje("Hay campos sin completar", "error", "Error al guardar");
+
+        } else {
+
+            try {
+                int edad = Integer.parseInt(edadTxt);
+                Departamento depar = control.findDepartamentoByNombre(nomDepartamento);
+
+                control.guardarEmpleado(nombre, apellido, edad, dni, email, celular, sexo, depar);
+
+                mostrarMensaje("Empleado guardado correctamente", "info", "Guardado correcto");
+            }
+            catch(NumberFormatException e){
+                mostrarMensaje("Ingresa una edad Valida","error","Error al guardar");
+            }
+
+        }
+
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxDepar;
@@ -589,20 +610,17 @@ public class CrearEmpleado extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
-    
-    
+
     //metodo para cargar los nombres de los departamentos creados en el combo box
-    public void cargarCmbDepartamentos(){
+    public void cargarCmbDepartamentos() {
         List<Departamento> departamentos = control.findAllDepartamentos();
-        
-        for(Departamento depar : departamentos){
+
+        for (Departamento depar : departamentos) {
             this.boxDepar.addItem(depar.getNombre());
         }
     }
-    
-    
-    
-    //metodo para mostra un mensaje a traves de un JOptionPane
+
+    //metodo para mostra un mensaje a traves de un JOptionPane (INFO O ERROR)
     public void mostrarMensaje(String mensaje, String tipo, String titulo) {
         JOptionPane optionpane = new JOptionPane(mensaje);
         if (tipo.equals("info")) {

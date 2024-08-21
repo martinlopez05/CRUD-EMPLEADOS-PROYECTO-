@@ -309,6 +309,7 @@ public class EditarEmpleado extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("EDICIÓN DE DATOS");
 
+        btnVolver.setBackground(new java.awt.Color(204, 204, 204));
         btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flecha-curva-apuntando-hacia-la-izquierda.png"))); // NOI18N
         btnVolver.setToolTipText("");
         btnVolver.setAutoscrolls(true);
@@ -352,6 +353,7 @@ public class EditarEmpleado extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Departamento:");
 
+        btnLimpiar.setBackground(new java.awt.Color(204, 204, 204));
         btnLimpiar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Downloads\\escoba.png")); // NOI18N
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -359,6 +361,7 @@ public class EditarEmpleado extends javax.swing.JFrame {
             }
         });
 
+        btnGuardar.setBackground(new java.awt.Color(204, 204, 204));
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/salvar.png"))); // NOI18N
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -379,9 +382,11 @@ public class EditarEmpleado extends javax.swing.JFrame {
         jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("Sexo:");
 
+        boxSexo.setBackground(new java.awt.Color(204, 204, 204));
         boxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Masculino", "Femenino" }));
         boxSexo.setAutoscrolls(true);
 
+        boxDepartamento.setBackground(new java.awt.Color(204, 204, 204));
         boxDepartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -389,7 +394,14 @@ public class EditarEmpleado extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+                .addGap(445, 445, 445)
+                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76)
+                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
@@ -428,20 +440,13 @@ public class EditarEmpleado extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtEmail)
                     .addComponent(txtCelular)
                     .addComponent(txtDni)
                     .addComponent(boxSexo, 0, 161, Short.MAX_VALUE))
                 .addGap(153, 153, 153))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(454, 454, 454)
-                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -466,18 +471,17 @@ public class EditarEmpleado extends javax.swing.JFrame {
                     .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16)
                     .addComponent(jLabel17))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(boxDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(boxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel18))
+                .addGap(41, 41, 41)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(boxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18)
+                    .addComponent(boxDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
-                .addGap(54, 54, 54)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42))
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimpiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -503,46 +507,80 @@ public class EditarEmpleado extends javax.swing.JFrame {
         txtEmail.setText("");
         txtCelular.setText("");
         boxSexo.setSelectedIndex(0);
-        
+
     }//GEN-LAST:event_btnLimpiarActionPerformed
-    
-    
+
     //metodo para regresar a la ventana anterior
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
-    
-    
+
     //metodo para guardar los atributos editados
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         String nombre = txtNombre.getText();
         String apellido = txtApellido.getText();
-        int edad = Integer.parseInt(txtEdad.getText());
+        String edadTxt = txtEdad.getText();
         String nomDepartamento = (String) boxDepartamento.getSelectedItem();
         String dni = txtDni.getText();
         String email = txtEmail.getText();
         String celular = txtCelular.getText();
         String sexo = (String) boxSexo.getSelectedItem();
-
+        
+        //manejo de los casos en que los campos esten vacios y la edad no sea valida
         if (nomDepartamento != null) {
-            Departamento departamento = control.findDepartamentoByNombre(nomDepartamento);
 
-            control.editEmpleado(empleado, nombre, apellido, edad, dni, email, celular, sexo, departamento);
+            if ((nombre == null || nombre.isEmpty())
+                    || (apellido == null || apellido.isEmpty())
+                    || (edadTxt == null || edadTxt.isEmpty())
+                    || (dni == null || dni.isEmpty())
+                    || (email == null || email.isEmpty())
+                    || (celular == null || celular.isEmpty())
+                    || (nomDepartamento == null || nomDepartamento.equals("-")
+                    || (sexo == null || sexo.equals("-")))) {
+                mostrarMensaje("Hay campos sin completar", "error", "Error al guardar");
+
+            } else {
+
+                try {
+                    int edad = Integer.parseInt(edadTxt);
+                    Departamento departamento = control.findDepartamentoByNombre(nomDepartamento);
+                    control.editEmpleado(empleado, nombre, apellido, edad, dni, email, celular, sexo, departamento);
+                    mostrarMensaje("Empleado editado correctamente", "info", "Guardado correcto");
+                    OpcionDatos verdatos = new OpcionDatos();
+                    verdatos.setVisible(true);
+                    verdatos.setLocationRelativeTo(null);
+                    this.dispose();
+                } catch (NumberFormatException e) {
+                    mostrarMensaje("Ingresa una edad Valida", "error", "Error al guardar");
+                }
+
+            }
+
+        } else {
+            if ((nombre == null || nombre.isEmpty())
+                    || (apellido == null || apellido.isEmpty())
+                    || (edadTxt == null || edadTxt.isEmpty())
+                    || (dni == null || dni.isEmpty())
+                    || (email == null || email.isEmpty())
+                    || (celular == null || celular.isEmpty())
+                    || (nomDepartamento == null || nomDepartamento.equals("-")
+                    || (sexo == null || sexo.equals("-")))) {
+                mostrarMensaje("Hay campos sin completar", "error", "Error al guardar");
+
+            } else {
+                try {
+                    int edad = Integer.parseInt(edadTxt);
+                    control.editEmpleado(empleado, nombre, apellido, edad, dni, email, celular, sexo, null);
+                    mostrarMensaje("Empleado editado correctamente", "info", "Guardado correcto");
+                    OpcionDatos verdatos = new OpcionDatos();
+                    verdatos.setVisible(true);
+                    verdatos.setLocationRelativeTo(null);
+                    this.dispose();
+                } catch (NumberFormatException e) {
+                    mostrarMensaje("Ingresa una edad Valida", "error", "Error al guardar");
+                }
+            }
         }
-        else{
-            control.editEmpleado(empleado, nombre, apellido, edad, dni, email, celular, sexo, null);
-        }
-        
-
-        
-
-        mostrarMensaje("Empleado editado correctamente", "info", "Edicion correcta");
-
-        OpcionDatos verdatos = new OpcionDatos();
-        verdatos.setVisible(true);
-        verdatos.setLocationRelativeTo(null);
-        this.dispose();
-
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -603,8 +641,7 @@ public class EditarEmpleado extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
-    
-    
+
     //metodo para cargar en el combo box de departamentos los nombres de los mismos
     public void cargarCmbDepartamentos() {
         List<Departamento> departamentos = control.findAllDepartamentos();
@@ -613,8 +650,8 @@ public class EditarEmpleado extends javax.swing.JFrame {
             this.boxDepartamento.addItem(depar.getNombre());
         }
     }
-    
-    //metodo para mostrar un mensaje en cartel
+
+    //metodo para crear un mensaje (INFO O ERROR)
     public void mostrarMensaje(String mensaje, String tipo, String titulo) {
         JOptionPane optionpane = new JOptionPane(mensaje);
         if (tipo.equals("info")) {
@@ -628,8 +665,7 @@ public class EditarEmpleado extends javax.swing.JFrame {
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
     }
-    
-    
+
     //metodo para cargar los datos a la ventana de edicion
     public void cargarDatos(int num_cliente) {
         this.empleado = control.findEmpleado(num_cliente);
@@ -640,21 +676,16 @@ public class EditarEmpleado extends javax.swing.JFrame {
         txtDni.setText(empleado.getDni());
         txtEmail.setText(empleado.getEmail());
         txtCelular.setText(empleado.getCelular());
-        
-        
+
         Departamento depto = empleado.getDepartamento();
-        
-        
-        
+
         //manejo del caso NULL del departamento
-        if(depto != null){
+        if (depto != null) {
             String nomDepartamento = depto.getNombre();
             boxDepartamento.setSelectedItem(nomDepartamento);
+        } else {
+            boxDepartamento.setSelectedIndex(0);
         }
-        else{
-            boxDepartamento.setSelectedIndex(0); 
-        }
-        
 
         if (empleado.getSexo().equals("Masculino")) {
             boxSexo.setSelectedIndex(1);

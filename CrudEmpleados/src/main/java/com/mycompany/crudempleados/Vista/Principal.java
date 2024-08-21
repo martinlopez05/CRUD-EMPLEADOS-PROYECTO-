@@ -88,6 +88,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btnverEmpleados.setBackground(new java.awt.Color(204, 204, 204));
         btnverEmpleados.setText("  VER EMPLEADOS");
         btnverEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +96,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        btnSalir.setBackground(new java.awt.Color(255, 51, 51));
         btnSalir.setText("    SALIR");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,8 +104,8 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        btnAgregarEmpleado.setBackground(new java.awt.Color(204, 204, 204));
         btnAgregarEmpleado.setText("  AGREGAR EMPLEADO");
-        btnAgregarEmpleado.setBorderPainted(false);
         btnAgregarEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarEmpleadoActionPerformed(evt);
@@ -114,6 +116,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("¿QUE DESEA HACER?");
 
+        btnAgregarDepartamento.setBackground(new java.awt.Color(204, 204, 204));
         btnAgregarDepartamento.setText("AGREGAR DEPARTAMENTO");
         btnAgregarDepartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,6 +124,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        btnverDepartamento.setBackground(new java.awt.Color(204, 204, 204));
         btnverDepartamento.setText("VER DEPARTAMENTOS");
         btnverDepartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

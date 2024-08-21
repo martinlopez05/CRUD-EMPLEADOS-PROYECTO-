@@ -18,18 +18,17 @@ public class EditarDepartamento extends javax.swing.JFrame {
     /**
      * Creates new form CrearEmpleado
      */
-    
     //llamada a la controladora de la logica
     private Controladora control;
     private Departamento depar;
-    private int num_departamento;  
-            
+    private int num_departamento;
+
     public EditarDepartamento(int num_departamento) {
         initComponents();
         this.control = new Controladora();
-        this.num_departamento=num_departamento;
+        this.num_departamento = num_departamento;
         cargarDatos(num_departamento);
-        
+
     }
 
     /**
@@ -272,6 +271,7 @@ public class EditarDepartamento extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("EDICIÓN DE DATOS");
 
+        btnVolver.setBackground(new java.awt.Color(204, 204, 204));
         btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flecha-curva-apuntando-hacia-la-izquierda.png"))); // NOI18N
         btnVolver.setToolTipText("");
         btnVolver.setAutoscrolls(true);
@@ -305,6 +305,7 @@ public class EditarDepartamento extends javax.swing.JFrame {
                 .addContainerGap(64, Short.MAX_VALUE))
         );
 
+        btnLimpiar.setBackground(new java.awt.Color(204, 204, 204));
         btnLimpiar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Downloads\\escoba.png")); // NOI18N
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -312,6 +313,7 @@ public class EditarDepartamento extends javax.swing.JFrame {
             }
         });
 
+        btnGuardar.setBackground(new java.awt.Color(204, 204, 204));
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/salvar.png"))); // NOI18N
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -389,30 +391,32 @@ public class EditarDepartamento extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     //metodo para settear los txt y combo box
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         txtNombre.setText("");
     }//GEN-LAST:event_btnLimpiarActionPerformed
-    
+
     //metodo para regresar a una ventana anterior
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
-    
-    
+
     //metodo para guardar los cambios y editar el departamento
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         String nombre = txtNombre.getText();
-        control.editDepartamento(depar,nombre);
-        mostrarMensaje("Departamento editado correctamente","info","Edicion correcta");
-        this.dispose();
-        VerDepartamentos verDepar = new VerDepartamentos();
-        verDepar.setVisible(true);
-        verDepar.setLocationRelativeTo(null);
+        if (nombre != null && !nombre.isEmpty()) {
+            control.editDepartamento(depar, nombre);
+            mostrarMensaje("Departamento guardado correctamente", "info", "Guardado correcto");
+            this.dispose();
+            VerDepartamentos verDepar = new VerDepartamentos();
+            verDepar.setVisible(true);
+            verDepar.setLocationRelativeTo(null);
+        } else {
+            mostrarMensaje("Hay campos sin llenar!", "error", "Error al guardar");
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
@@ -455,8 +459,8 @@ public class EditarDepartamento extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
-    
-    //metodo para crear un mensaje a traves de JOptionPane
+
+    //metodo para crear un mensaje a traves de JOptionPane (INFO O ERROR)
     public void mostrarMensaje(String mensaje, String tipo, String titulo) {
         JOptionPane optionpane = new JOptionPane(mensaje);
         if (tipo.equals("info")) {
@@ -470,10 +474,10 @@ public class EditarDepartamento extends javax.swing.JFrame {
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
     }
-   
+
     //metodo para cargar los datos del departamento en la ventana de edicion 
-    public void cargarDatos(int num_departamento){
+    public void cargarDatos(int num_departamento) {
         this.depar = control.findDepartamento(num_departamento);
-        txtNombre.setText(depar.getNombre());      
+        txtNombre.setText(depar.getNombre());
     }
 }
