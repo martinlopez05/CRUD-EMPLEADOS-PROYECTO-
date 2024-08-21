@@ -525,60 +525,28 @@ public class EditarEmpleado extends javax.swing.JFrame {
         String email = txtEmail.getText();
         String celular = txtCelular.getText();
         String sexo = (String) boxSexo.getSelectedItem();
-        
+
         //manejo de los casos en que los campos esten vacios y la edad no sea valida
-        if (nomDepartamento != null) {
-
-            if ((nombre == null || nombre.isEmpty())
-                    || (apellido == null || apellido.isEmpty())
-                    || (edadTxt == null || edadTxt.isEmpty())
-                    || (dni == null || dni.isEmpty())
-                    || (email == null || email.isEmpty())
-                    || (celular == null || celular.isEmpty())
-                    || (nomDepartamento == null || nomDepartamento.equals("-")
-                    || (sexo == null || sexo.equals("-")))) {
-                mostrarMensaje("Hay campos sin completar", "error", "Error al guardar");
-
-            } else {
-
-                try {
-                    int edad = Integer.parseInt(edadTxt);
-                    Departamento departamento = control.findDepartamentoByNombre(nomDepartamento);
-                    control.editEmpleado(empleado, nombre, apellido, edad, dni, email, celular, sexo, departamento);
-                    mostrarMensaje("Empleado editado correctamente", "info", "Guardado correcto");
-                    OpcionDatos verdatos = new OpcionDatos();
-                    verdatos.setVisible(true);
-                    verdatos.setLocationRelativeTo(null);
-                    this.dispose();
-                } catch (NumberFormatException e) {
-                    mostrarMensaje("Ingresa una edad Valida", "error", "Error al guardar");
-                }
-
-            }
-
+        if (nombre.isEmpty() || apellido.isEmpty() || edadTxt.isEmpty() || dni.isEmpty()
+                || email.isEmpty() || celular.isEmpty() || sexo.equals("-") || nomDepartamento.equals("-")) {
+            mostrarMensaje("Hay campos sin completar", "error", "Error al guardar");
         } else {
-            if ((nombre == null || nombre.isEmpty())
-                    || (apellido == null || apellido.isEmpty())
-                    || (edadTxt == null || edadTxt.isEmpty())
-                    || (dni == null || dni.isEmpty())
-                    || (email == null || email.isEmpty())
-                    || (celular == null || celular.isEmpty())
-                    || (nomDepartamento == null || nomDepartamento.equals("-")
-                    || (sexo == null || sexo.equals("-")))) {
-                mostrarMensaje("Hay campos sin completar", "error", "Error al guardar");
 
-            } else {
-                try {
-                    int edad = Integer.parseInt(edadTxt);
-                    control.editEmpleado(empleado, nombre, apellido, edad, dni, email, celular, sexo, null);
-                    mostrarMensaje("Empleado editado correctamente", "info", "Guardado correcto");
-                    OpcionDatos verdatos = new OpcionDatos();
-                    verdatos.setVisible(true);
-                    verdatos.setLocationRelativeTo(null);
-                    this.dispose();
-                } catch (NumberFormatException e) {
-                    mostrarMensaje("Ingresa una edad Valida", "error", "Error al guardar");
+            try {
+                int edad = Integer.parseInt(edadTxt);
+                Departamento departamento = null;
+                if (!nomDepartamento.equals("-")) {
+                    departamento = control.findDepartamentoByNombre(nomDepartamento);
                 }
+
+                control.editEmpleado(empleado, nombre, apellido, edad, dni, email, celular, sexo, departamento);
+                mostrarMensaje("Empleado editado correctamente", "info", "Guardado correcto");
+                OpcionDatos verdatos = new OpcionDatos();
+                verdatos.setVisible(true);
+                verdatos.setLocationRelativeTo(null);
+                this.dispose();
+            } catch (NumberFormatException e) {
+                mostrarMensaje("Ingresa una edad Valida", "error", "Error al guardar");
             }
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
