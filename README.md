@@ -28,5 +28,5 @@ Este sistema permite a los usuarios gestionar los empleados de una empresa, asoc
 - **JDBC:** Para la conexión entre la aplicación y la base de datos.
 
 ## Captura del proyecto
-![Captura del Proyecto](assets/captura.png)
+![Captura del Proyecto](CrudEmpleados/assets/captura.png)
 
