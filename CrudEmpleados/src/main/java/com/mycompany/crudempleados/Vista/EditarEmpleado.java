@@ -527,7 +527,7 @@ public class EditarEmpleado extends javax.swing.JFrame {
         String sexo = (String) boxSexo.getSelectedItem();
 
         //manejo de los casos en que los campos esten vacios y la edad no sea valida
-        if (nombre.isEmpty() || apellido.isEmpty() || edadTxt.isEmpty() || dni.isEmpty()
+        if (nombre.isEmpty() ||  apellido.isEmpty() || edadTxt.isEmpty() || dni.isEmpty()
                 || email.isEmpty() || celular.isEmpty() || sexo.equals("-") || nomDepartamento.equals("-")) {
             mostrarMensaje("Hay campos sin completar", "error", "Error al guardar");
         } else {
